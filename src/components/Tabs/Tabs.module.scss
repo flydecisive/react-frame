@@ -1,0 +1,17 @@
+@use '/src/mixins.scss';
+
+.tabs {
+    width: 100%;
+    height: 60px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    & > * {
+        min-width: 0;
+    }
+}

@@ -1,0 +1,122 @@
+@use './vars';
+@use './mixins';
+
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: vars.$black-2;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.header {
+  @include mixins.flex-center;
+
+  width: 100%;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  &__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &__button {
+    @include mixins.flex-center;
+
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+    
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover, &--active {
+      border-color: vars.$blue-color-1;
+    }
+
+    &:hover svg, &--active svg {
+      fill: vars.$blue-color-1;
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.chats {
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  min-width: 0;
+  overflow: auto;
+  
+  @include mixins.flex-center;
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: center;
+
+  & > p {
+    display: block;
+    width: 100%;
+  }
+}
+
+.frame {
+  display: flex;
+  height: 100%;
+  min-width: 400px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  will-change: width;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  &__wrapper {
+      width: 100%;
+      height: 100%;
+      background-color: #f3f3f4;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-y: scroll;
+      transition: none;
+
+      &::-webkit-scrollbar { display: none; }     
+  }
+}
+
+.spliter_icon {
+  @include mixins.flex-center;
+  gap: 2px;
+
+  &__line {
+    width: 1px;
+    height: 20px;
+    background-color: #969EAA;
+  }
+}

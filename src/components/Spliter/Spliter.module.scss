@@ -1,0 +1,13 @@
+@use '/src/mixins.scss';
+@use '/src/vars.scss';
+
+.spliter {
+    @include mixins.flex-center;
+
+    width: 10px;
+    height: 100%;
+
+    &:hover {
+        cursor: ew-resize;
+    }
+}
