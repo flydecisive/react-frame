@@ -1,0 +1,15 @@
+.frame_icons {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+
+    &__portrait, &__all {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+}

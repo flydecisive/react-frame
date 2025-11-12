@@ -1,11 +1,13 @@
 import styles from "./Spliter.module.scss";
 import { SpliterIcon } from "../imgs/SpliterIcon.jsx";
-import { useCallback, useRef, useEffect } from "react";
+import { useCallback, useRef, useEffect, useContext } from "react";
+import { FrameContext } from "../../contexts/FrameContext.jsx";
 
 export function Spliter({ handleResizing }) {
   const isResizing = useRef(false);
   const startX = useRef(0);
   const startWidth = useRef(0);
+  const { setFrameWidth } = useContext(FrameContext);
 
   const handleMouseDown = useCallback((e) => {
     isResizing.current = true;
@@ -14,7 +16,7 @@ export function Spliter({ handleResizing }) {
     const frameElement = e.target.closest(".frame");
     startWidth.current = frameElement ? frameElement.offsetWidth : 600;
 
-    document.body.classList.add("resizing");
+    // document.body.classList.add("resizing");
     e.preventDefault();
     e.stopPropagation();
   }, []);
@@ -27,6 +29,7 @@ export function Spliter({ handleResizing }) {
       const newWidth = Math.max(400, startWidth.current - deltaX);
 
       handleResizing(newWidth);
+      setFrameWidth(newWidth);
     },
     [handleResizing]
   );
@@ -34,7 +37,7 @@ export function Spliter({ handleResizing }) {
   const handleMouseUp = useCallback(() => {
     if (isResizing.current) {
       isResizing.current = false;
-      document.body.classList.remove("resizing");
+      // document.body.classList.remove("resizing");
     }
   }, []);
 
